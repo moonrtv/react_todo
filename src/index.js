@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import AppHeader from './components/app-header';
-import SearchPanel from './components/search-panel';
-import TodoList from './components/todo-list';
-import ItemStatusFilter from './components/item-status-filter';
+import AppHeader from './components/app-header/app-header';
+import SearchPanel from './components/search-panel/search-panel';
+import TodoList from './components/todo-list/todo-list';
+import ItemStatusFilter from './components/item-status-filter/item-status-filter';
 
 import './index.css';
 import todoData from './data.json';
