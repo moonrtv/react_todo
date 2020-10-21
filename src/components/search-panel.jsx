@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const SearchPanel = () => {
-  return <input placeholder="Type to search info" />;
+	return <input placeholder="Type to search info" />;
 };
 
 export default SearchPanel;

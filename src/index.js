@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -7,9 +6,9 @@ import SearchPanel from './components/search-panel';
 import TodoList from './components/todo-list';
 
 const App = () => (<div>
-  <AppHeader />
-  <SearchPanel />
-  <TodoList />
+	<AppHeader />
+	<SearchPanel />
+	<TodoList />
 </div>);
 
 ReactDOM.render(<App />, document.getElementById('root'));
