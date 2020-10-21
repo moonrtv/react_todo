@@ -5,10 +5,14 @@ import AppHeader from './components/app-header';
 import SearchPanel from './components/search-panel';
 import TodoList from './components/todo-list';
 
-const App = () => (<div>
-	<AppHeader />
-	<SearchPanel />
-	<TodoList />
-</div>);
+import todoData from './data.json';
+
+const App = () => {
+	return (<div>
+		<AppHeader />
+		<SearchPanel />
+		<TodoList todos={todoData}/>
+	</div>);
+};
 
 ReactDOM.render(<App />, document.getElementById('root'));
