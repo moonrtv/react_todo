@@ -2,16 +2,19 @@
   {
     "id": 1,
     "label": "Drink Coffe",
-    "important": false
+    "important": false,
+    "done": false
   },
   {
     "id": 2,
     "label": "Build Awesome App",
-    "important": true
+    "important": true,
+    "done": false
   },
   {
     "id": 3,
     "label": "Have dinner",
-    "important": false
+    "important": false,
+    "done": false
   }
 ]
