@@ -12,7 +12,9 @@ import todoData from "../../data.json";
 export default class App extends Component {
   maxId = 100;
   state = {
-    todoData: []
+    todoData: [],
+    term: "",
+    filter: "all"
   };
 
   componentDidMount() {
@@ -74,8 +76,40 @@ export default class App extends Component {
     });
   };
 
+  searchItems = (items, search) => {
+    if (search.length === 0) {
+      return items;
+    }
+
+    return items.filter(item => {
+      return item.label.toLowerCase().indexOf(search.toLowerCase()) > -1;
+    });
+  };
+
+  filterItems(items, filter) {
+    if (filter === "all") {
+      return items;
+    } else if (filter === "active") {
+      return items.filter(item => !item.done);
+    } else if (filter === "done") {
+      return items.filter(item => item.done);
+    }
+  }
+  searchChange = term => {
+    this.setState({ term });
+  };
+
+  filterChange = filter => {
+    this.setState({ filter });
+  };
+
   render() {
-    let { todoData } = this.state;
+    let { todoData, term, filter } = this.state;
+
+    let visibleItems = this.filterItems(
+      this.searchItems(todoData, term),
+      filter
+    );
 
     const doneCount = todoData.filter(el => el.done).length;
     const totalCount = todoData.length - doneCount;
@@ -84,11 +118,14 @@ export default class App extends Component {
       <div className="todo-app">
         <AppHeader toDo={totalCount} done={doneCount} />
         <div className="top-panel d-flex">
-          <SearchPanel />
-          <ItemStatusFilter />
+          <SearchPanel onSearchChange={this.searchChange} />
+          <ItemStatusFilter
+            filter={filter}
+            onFilterChange={this.filterChange}
+          />
         </div>
         <TodoList
-          todos={todoData}
+          todos={visibleItems}
           onDeleted={this.deleteItem}
           onToggleImportant={this.toggleImportant}
           onToggleDone={this.toggleDone}
